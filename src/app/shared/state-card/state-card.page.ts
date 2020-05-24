@@ -45,7 +45,7 @@ export class StateCardPage implements OnInit {
     );
   }
 
-  onSearch(character: string) {
+  onSearch() {
     let search = this.search.toLowerCase().trim();
     this.filteredStates = this.states.filter(x => {
       if (x.state.toLowerCase().trim().startsWith(search) ||
