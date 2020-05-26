@@ -42,6 +42,28 @@ export class AuthService {
         return false;
     }
 
+    /**
+     * Efetua o cadastro e login do usuário
+     * @param email Email do usuário a efetuar o login
+     * @param password Senha do usuário a efetuar o login
+     */
+    async createUser(email: string, password: string) {
+        let result = new Promise<any>((resolve, reject) => {
+            this.auth.createUserWithEmailAndPassword(email, password)
+                .then((result) => {
+                    localStorage.removeItem('user');
+                    this.userData = result.user;
+                    localStorage.setItem('user', JSON.stringify(this.userData));
+                    JSON.parse(localStorage.getItem('user'));
+                    resolve(true);
+                })
+                .catch((error) => {
+                    reject(error);
+                })
+        });
+        return await result;
+    }
+
 
     /**
      * Efetua o login do usuário

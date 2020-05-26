@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IState } from '../models/state';
 import { CovidService } from '../services/covid.service';
-import { ToastController } from '@ionic/angular';
+import { ToastService } from '../services/toast.service';
 
 @Component({
   selector: 'state-card',
@@ -16,7 +16,7 @@ export class StateCardPage implements OnInit {
 
   search: string = '';
 
-  constructor(private covidService: CovidService, private toastController: ToastController) { }
+  constructor(private covidService: CovidService, private toastService: ToastService) { }
 
   ngOnInit() {
     // this.loadMock();
@@ -29,7 +29,7 @@ export class StateCardPage implements OnInit {
         this.states = result;
       },
       (error) => {
-        this.presentToast("Erro ao carregar os dados", "danger");
+        this.toastService.presentToast("Erro ao carregar os dados", "danger");
       }
     );
   }
@@ -40,7 +40,7 @@ export class StateCardPage implements OnInit {
         this.states = result;
       },
       (error) => {
-        this.presentToast("Erro ao carregar o mock", "danger");
+        this.toastService.presentToast("Erro ao carregar o mock", "danger");
       }
     );
   }
@@ -57,15 +57,6 @@ export class StateCardPage implements OnInit {
   resetSearch() {
     this.search = '';
     this.filteredStates = [];
-  }
-
-  async presentToast(message: string, color: string) {
-    const toast = await this.toastController.create({
-      color: color,
-      message: message,
-      duration: 3500,
-    });
-    toast.present();
   }
 
 }

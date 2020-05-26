@@ -16,6 +16,7 @@ import { environment } from 'src/environments/environment';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
+import { ToastService } from './shared/services/toast.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +34,7 @@ import { AuthModule } from './auth/auth.module';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     AngularFireAuth,
+    ToastService
   ],
   bootstrap: [AppComponent]
 })

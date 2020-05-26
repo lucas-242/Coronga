@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
+import { ToastService } from '../shared/services/toast.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,7 +13,7 @@ export class SignInPage implements OnInit {
 
   typeView: 'signIn' | 'signUp' = 'signIn';
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService, private toastService: ToastService) { }
 
   ngOnInit() {
   }
@@ -24,17 +25,29 @@ export class SignInPage implements OnInit {
         this.router.navigate(['/home']);
       })
       .catch(error => {
-        // Swal.fire(
-        //   'Erro',
-        //   'Erro ao efetuar login, tente novamente ou contate o suporte',
-        //   'error'
-        // );
-        alert(error);
+        this.toastService.presentToast(`Erro ao efetuar login: ${error}`, "danger");
       });
   }
 
-  register(form: any) {
-    console.log()
+  register(form: NgForm) {
+    let credentials = form.value;
+    this.authService.createUser(credentials.email, credentials.password)
+      .then(result => {
+        this.router.navigate(['/home']);
+      })
+      .catch(error => {
+        this.toastService.presentToast(`Erro ao inserir usuário: ${error}`, "danger");
+      });
+  }
+
+  onType(form: NgForm) {
+    let values = form.value;
+
+    if (values.password != values.confirm)
+      form.controls['confirm'].setErrors({ 'different': true });
+    else
+      form.controls['confirm'].setErrors(null);
+
   }
 
 }

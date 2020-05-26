@@ -1,11 +1,16 @@
-<ion-content >
-  <form  #form="ngForm" (ngSubmit)="signIn(form)" autocomplete="off" *ngIf="typeView == 'signIn'">
+<ion-content>
+
+  <ion-text color="primary">
+    <h2 class="ion-text-center">CORONGA</h2>
+  </ion-text>
+
+  <form #form="ngForm" (ngSubmit)="signIn(form)" autocomplete="off" *ngIf="typeView == 'signIn'">
     <ion-grid>
       <ion-row>
-        <ion-col size-md="6" size-lg="5" size-xs="12">
-          <div text-center>
-            <h3>Login</h3>
-          </div>
+        <ion-col size-xs="12">
+          <ion-text color="secondary">
+            <h3 class="ion-padding-start">Login</h3>
+          </ion-text>
           <div class="ion-padding">
             <ion-item>
               <ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
@@ -15,7 +20,7 @@
             </ion-item>
           </div>
           <div class="ion-padding">
-            <ion-button  size="large" type="submit" [disabled]="form.invalid" expand="block">Login</ion-button>
+            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Login</ion-button>
           </div>
         </ion-col>
       </ion-row>
@@ -23,29 +28,30 @@
   </form>
 
 
-  <form  #form="ngForm" (ngSubmit)="register(form)" autocomplete="off" *ngIf="typeView == 'signUp'">
+  <form #form="ngForm" (ngSubmit)="register(form)" autocomplete="off" *ngIf="typeView == 'signUp'">
     <ion-grid>
       <ion-row>
-        <ion-col size-md="6" size-lg="5" size-xs="12">
-          <div text-center>
-            <h3>Create your account</h3>
-          </div>
+        <ion-col size-xs="12">
+          <ion-text color="secondary">
+            <h3 class="ion-padding-start">Create your account</h3>
+          </ion-text>
           <div class="ion-padding">
             <ion-item>
-              <ion-input  name="name" type="text" placeholder="Name" ngModel required></ion-input>
+              <ion-input name="name" type="text" placeholder="Name" ngModel required></ion-input>
             </ion-item>
             <ion-item>
               <ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+              <ion-input name="password" type="password" placeholder="Password" (ionChange)="onType(form)" ngModel required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="confirm" type="password" placeholder="Password again" ngModel required></ion-input>
+              <ion-input name="confirm" type="password" placeholder="Repeat password" (ionChange)="onType(form)" ngModel
+                required></ion-input>
             </ion-item>
           </div>
           <div class="ion-padding">
-            <ion-button  size="large" type="submit" [disabled]="form.invalid" expand="block">Register</ion-button>
+            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Register</ion-button>
           </div>
         </ion-col>
       </ion-row>
@@ -56,4 +62,25 @@
     <a *ngIf="typeView == 'signUp'" (click)="typeView = 'signIn'">I already have an account</a>
     <a *ngIf="typeView == 'signIn'" (click)="typeView = 'signUp'">I want to create an account</a>
   </div>
+
 </ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <div class="ion-padding">
+      <ion-text color="secondary">
+        <a class="secondary" href="https://github.com/lucas-242" target="blank">
+          <ion-icon class="ion-float-left" name="logo-github" style="margin-right: 0.4rem;"></ion-icon>
+          <span class="ion-float-left">Lucas Guimarães</span>
+        </a>
+      </ion-text>
+      <ion-text color="primary">
+        <a href="https://covid19-brazil-api.now.sh/" target="blank">
+          <span class="ion-float-right">
+            COVID-19 Brazil API
+          </span>
+        </a>
+      </ion-text>
+    </div>
+  </ion-toolbar>
+</ion-footer>
