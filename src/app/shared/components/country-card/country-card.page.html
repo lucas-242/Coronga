@@ -1,0 +1,72 @@
+<ion-toolbar>
+  <ion-searchbar (ionChange)="onSearch()" (ionClear)="resetSearch()" [(ngModel)]="search"></ion-searchbar>
+</ion-toolbar>
+
+<ng-container *ngIf="search == null || search == ''">
+  <ion-card *ngFor="let country of countries">
+    <a (click)="selectCountry(country)">
+      <ion-card-header>
+        <ion-card-title>{{ country.country }}</ion-card-title>
+        <ion-card-subtitle>
+          <span class="ion-float-left">Casos: {{ country.cases }}</span>
+          <span class="ion-float-right">Atualizado: {{ country.updated_at | date:"dd/MM/yyyy"}}</span>
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-list lines="none">
+        <ion-item>
+          <ion-icon name="pulse-outline" slot="start" color="warning" style="margin-right: 8px;"></ion-icon>
+          <ion-label>Confirmed</ion-label>
+          <ion-note slot="end" color="warning" style="font-size: 15px;">{{ country.confirmed }}</ion-note>
+        </ion-item>
+  
+        <ion-item>
+          <ion-icon name="bandage-outline" slot="start" color="primary" style="margin-right: 8px;"></ion-icon>
+          <ion-label>Recovered</ion-label>
+          <ion-note slot="end" color="primary" style="font-size: 15px;">{{ country.recovered }}</ion-note>
+        </ion-item>
+  
+        <ion-item>
+          <ion-icon name="skull-outline" slot="start" color="secundary" style="margin-right: 8px;"></ion-icon>
+          <ion-label>Mortes</ion-label>
+          <ion-note slot="end" color="secundary" style="font-size: 15px;">{{ country.deaths }}</ion-note>
+        </ion-item>
+      </ion-list>
+
+    </a>
+  </ion-card>
+</ng-container>
+
+
+<ng-container *ngIf="search != null && search != ''">
+  <ion-card *ngFor="let country of filteredCountries">
+    <ion-card-header>
+      <ion-card-title>{{ country.country }}</ion-card-title>
+      <ion-card-subtitle>
+        <span class="ion-float-left">Casos: {{ country.cases }}</span>
+        <span class="ion-float-right">Atualizado: {{ country.updated_at | date:"dd/MM/yyyy"}}</span>
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-list lines="none">
+      <ion-item>
+        <ion-icon name="pulse-outline" slot="start" color="warning" style="margin-right: 8px;"></ion-icon>
+        <ion-label>Confirmed</ion-label>
+        <ion-note slot="end" color="warning" style="font-size: 15px;">{{ country.confirmed }}</ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="pulse-outline" slot="start" color="primary" style="margin-right: 8px;"></ion-icon>
+        <ion-label>Recovered</ion-label>
+        <ion-note slot="end" color="primary" style="font-size: 15px;">{{ country.recovered }}</ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="skull-outline" slot="start" color="secundary" style="margin-right: 8px;"></ion-icon>
+        <ion-label>Mortes</ion-label>
+        <ion-note slot="end" color="secundary" style="font-size: 15px;">{{ country.deaths }}</ion-note>
+      </ion-item>
+    </ion-list>
+
+  </ion-card>
+</ng-container>

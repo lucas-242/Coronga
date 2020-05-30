@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators'
 
 import { IState } from '../models/state';
+import { ICountry } from '../models/country';
 
 const API = "https://covid19-brazil-api.now.sh/api/";
 
@@ -11,9 +12,16 @@ export class CovidService {
 
     constructor(private http: HttpClient) { }
 
-    /**Get all States */
-    get() {
-        return this.http.get<{data:[]}>(`${API}report/v1`).pipe(
+    /**Get all Countries */
+    getCountries() {
+        return this.http.get<{ data: [] }>(`${API}report/v1/countries`).pipe(
+            map(x => x.data as ICountry[])
+        );
+    }
+
+    /**Get all States from Brazil */
+    getStates() {
+        return this.http.get<{ data: [] }>(`${API}report/v1`).pipe(
             map(x => x.data as IState[])
         );
     }
@@ -27,8 +35,14 @@ export class CovidService {
 
     }
 
-    loadMock() {
-        return this.http.get<{data:[]}>(`/assets/mocks/state.json`).pipe(
+    loadMockCountries() {
+        return this.http.get<{ data: [] }>(`/assets/mocks/country.json`).pipe(
+            map(x => x.data as ICountry[])
+        );
+    }
+
+    loadMockStates() {
+        return this.http.get<{ data: [] }>(`/assets/mocks/state.json`).pipe(
             map(x => x.data as IState[])
         );
     }
