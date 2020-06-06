@@ -13,25 +13,20 @@
         </ion-card-subtitle>
       </ion-card-header>
 
-      <ion-list lines="none">
-        <ion-item>
-          <ion-icon name="pulse-outline" slot="start" color="warning" style="margin-right: 8px;"></ion-icon>
-          <ion-label>Confirmed</ion-label>
-          <ion-note slot="end" color="warning" style="font-size: 15px;">{{ country.confirmed }}</ion-note>
-        </ion-item>
-  
-        <ion-item>
-          <ion-icon name="bandage-outline" slot="start" color="primary" style="margin-right: 8px;"></ion-icon>
-          <ion-label>Recovered</ion-label>
-          <ion-note slot="end" color="primary" style="font-size: 15px;">{{ country.recovered }}</ion-note>
-        </ion-item>
-  
-        <ion-item>
-          <ion-icon name="skull-outline" slot="start" color="secundary" style="margin-right: 8px;"></ion-icon>
-          <ion-label>Mortes</ion-label>
-          <ion-note slot="end" color="secundary" style="font-size: 15px;">{{ country.deaths }}</ion-note>
-        </ion-item>
-      </ion-list>
+      <ion-item lines="none">
+        <ion-icon name="pulse-outline" slot="start" color="warning" style="margin-right: 8px;"></ion-icon>
+        <ion-label>Confirmed</ion-label><ion-text color="warning">{{ country.confirmed }}</ion-text>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-icon name="bandage-outline" slot="start" color="primary" style="margin-right: 8px;"></ion-icon>
+        <ion-label>Recovered</ion-label><ion-text color="primary">{{ country.recovered }}</ion-text>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-icon name="skull-outline" slot="start" color="secundary" style="margin-right: 8px;"></ion-icon>
+        <ion-label>Deaths</ion-label><ion-text color="secundary">{{ country.deaths }}</ion-text>
+      </ion-item>
 
     </a>
   </ion-card>
@@ -48,25 +43,20 @@
       </ion-card-subtitle>
     </ion-card-header>
 
-    <ion-list lines="none">
-      <ion-item>
-        <ion-icon name="pulse-outline" slot="start" color="warning" style="margin-right: 8px;"></ion-icon>
-        <ion-label>Confirmed</ion-label>
-        <ion-note slot="end" color="warning" style="font-size: 15px;">{{ country.confirmed }}</ion-note>
-      </ion-item>
+    <ion-item lines="none">
+      <ion-icon name="pulse-outline" slot="start" color="warning" style="margin-right: 8px;"></ion-icon>
+      <ion-label>Confirmed</ion-label><ion-text color="warning">{{ country.confirmed }}</ion-text>
+    </ion-item>
 
-      <ion-item>
-        <ion-icon name="pulse-outline" slot="start" color="primary" style="margin-right: 8px;"></ion-icon>
-        <ion-label>Recovered</ion-label>
-        <ion-note slot="end" color="primary" style="font-size: 15px;">{{ country.recovered }}</ion-note>
-      </ion-item>
+    <ion-item lines="none">
+      <ion-icon name="bandage-outline" slot="start" color="primary" style="margin-right: 8px;"></ion-icon>
+      <ion-label>Recovered</ion-label><ion-text color="primary">{{ country.recovered }}</ion-text>
+    </ion-item>
 
-      <ion-item>
-        <ion-icon name="skull-outline" slot="start" color="secundary" style="margin-right: 8px;"></ion-icon>
-        <ion-label>Mortes</ion-label>
-        <ion-note slot="end" color="secundary" style="font-size: 15px;">{{ country.deaths }}</ion-note>
-      </ion-item>
-    </ion-list>
+    <ion-item lines="none">
+      <ion-icon name="skull-outline" slot="start" color="secundary" style="margin-right: 8px;"></ion-icon>
+      <ion-label>Deaths</ion-label><ion-text color="secundary">{{ country.deaths }}</ion-text>
+    </ion-item>
 
   </ion-card>
 </ng-container>

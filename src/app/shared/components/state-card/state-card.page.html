@@ -15,14 +15,12 @@
     <ion-list lines="none">
       <ion-item>
         <ion-icon name="pulse-outline" slot="start" color="warning" style="margin-right: 8px;"></ion-icon>
-        <ion-label>Suspeitos</ion-label>
-        <ion-note slot="end" color="warning" style="font-size: 15px;">{{ state.suspects }}</ion-note>
+        <ion-label>Suspects</ion-label><ion-text color="warning">{{ state.suspects }}</ion-text>
       </ion-item>
 
       <ion-item>
         <ion-icon name="skull-outline" slot="start" color="secundary" style="margin-right: 8px;"></ion-icon>
-        <ion-label>Mortes</ion-label>
-        <ion-note slot="end" color="secundary" style="font-size: 15px;">{{ state.deaths }}</ion-note>
+        <ion-label>Mortes</ion-label><ion-text color="secundary">{{ state.deaths }}</ion-text>
       </ion-item>
     </ion-list>
 
@@ -40,19 +38,17 @@
       </ion-card-subtitle>
     </ion-card-header>
 
-    <ion-list lines="none">
-      <ion-item>
+      <ion-item lines="none">
         <ion-icon name="pulse-outline" slot="start" color="warning" style="margin-right: 8px;"></ion-icon>
-        <ion-label>Suspeitos</ion-label>
-        <ion-note slot="end" color="warning" style="font-size: 15px;">{{ state.suspects }}</ion-note>
+        <ion-label>Suspects</ion-label><ion-text color="warning">{{ state.suspects }}</ion-text>
       </ion-item>
 
-      <ion-item>
+      <ion-item lines="none">
         <ion-icon name="skull-outline" slot="start" color="secundary" style="margin-right: 8px;"></ion-icon>
-        <ion-label>Mortes</ion-label>
-        <ion-note slot="end" color="secundary" style="font-size: 15px;">{{ state.deaths }}</ion-note>
+        <ion-label>Deaths</ion-label><ion-text color="secundary">{{ state.deaths }}</ion-text>
       </ion-item>
-    </ion-list>
+
+    
 
   </ion-card>
 </ng-container>
